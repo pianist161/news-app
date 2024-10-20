@@ -5,6 +5,7 @@ import { getCategories, getNews } from '../../api/apiNews'
 import NewsList from '../../components/NewsList/NewsList'
 import Skeleton from '../../components/Skeleton/Skeleton'
 import Pagination from '../../components/Pagination/Pagination'
+import Category from '../../components/Category/Category'
 const Main = () => {
 	const [news, setNews] = useState([])
 	const [categories, setCategories] = useState([])
@@ -16,7 +17,11 @@ const Main = () => {
 	const fetchNews = async currentPage => {
 		try {
 			setIsLoading(true)
-			const res = await getNews(currentPage, pageSize)
+			const res = await getNews({
+				page_number: currentPage,
+				page_size: pageSize,
+				category: selectCategories === 'All' ? null : selectCategories,
+			})
 			console.log(res)
 			setIsLoading(false)
 			setNews(res.news)
@@ -52,10 +57,12 @@ const Main = () => {
 	}
 	useEffect(() => {
 		fetchNews(currentPage)
-	}, [currentPage])
+	}, [currentPage, selectCategories])
 	return (
 		<main className={styles.main}>
+			<Category categories={categories} setSelectedCategory={setSelectCategories} selectedCategory={selectCategories} />
 			{news.length > 0 && !isLoading ? <NewsBanner item={news[0]} /> : <Skeleton count={1} type={'banner'} />}
+
 			<Pagination
 				handleNextPage={handleNextPage}
 				handleClick={handleClick}
