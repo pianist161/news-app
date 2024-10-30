@@ -1,7 +1,7 @@
 import styles from './styles.module.css'
 
-import LatestNews from '../../components/LatestNews/LatestNews.jsx'
-import NewsByFilters from '../../components/NewsByFilters/NewsByFilters.jsx'
+import LatestNews from '../../components/LatestNews/LatestNews.js'
+import NewsByFilters from '../../components/NewsByFilters/NewsByFilters.js'
 
 const Main = () => {
 	return (

@@ -1,7 +1,12 @@
 import React from 'react'
 import { formatDate } from '../../helpers/formatDate'
 import styles from './styles.module.css'
-const Search = ({ keyWords, setKeyWords }) => {
+interface Props {
+	keyWords: string
+	setKeyWords: (keywords: string) => void
+}
+
+const Search = ({ keyWords, setKeyWords }: Props) => {
 	return (
 		<div className={styles.search}>
 			<input
