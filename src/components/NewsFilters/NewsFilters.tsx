@@ -6,8 +6,15 @@ import { getCategories } from '../../api/apiNews'
 import Category from '../Category/Category'
 import Search from '../Search/Search'
 import Slider from '../Slider/Slider'
-const NewsFilters = ({ filters, changeFilter }) => {
-	const { data: dataCategories } = useFetch(getCategories)
+import { CategoriesApiResponse, IFilters } from '../../interfaces'
+
+interface Props {
+	filters: IFilters
+	changeFilter: (key: string, value: string | number | null) => void
+}
+
+const NewsFilters = ({ filters, changeFilter }: Props) => {
+	const { data: dataCategories } = useFetch<CategoriesApiResponse, null>(getCategories)
 	return (
 		<div className={styles.filters}>
 			{dataCategories ? (
