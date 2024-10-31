@@ -10,6 +10,7 @@ import { useFetch } from '../../helpers/hooks/useFetch'
 import { getNews } from '../../api/apiNews'
 import PaginationWrapper from '../PaginationWrapper/PaginationWrapper'
 import { NewsApiResponse, ParamsType } from '../../interfaces'
+
 const NewsByFilters = () => {
 	const { filters, changeFilter } = useFilters({
 		page_number: 0,
