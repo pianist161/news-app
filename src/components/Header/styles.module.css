@@ -1,11 +1,24 @@
 .header {
 	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	width: 100%;
 	padding: 12px 24px;
 	background-color: white;
 	border-bottom: 1px solid #f2f4f5;
+
+	gap: 12px;
+}
+.info {
+	display: flex;
 	flex-direction: column;
 	gap: 12px;
+}
+.dark {
+	background-color: #23272f;
+}
+.light {
+	background-color: white;
 }
 .title {
 	font-size: 28px;
